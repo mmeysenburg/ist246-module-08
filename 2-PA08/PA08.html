@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<p>In this assignment, we will modify the <code>MinHeap</code> class so it can be used to sort an array, using a procedure known as the <em>HeapSort</em>. In the module's git repository, you will find a directory entitled <code>2-PA08</code>. In that directory are two source files, <code>IntMinHeap.h</code> and <code>HeapSort.cpp</code>, to get you started.</p>
+<p><code>IntMinHeap.h</code> contains the <code>IntMinHeap</code> class, which is similar to the <code>MinHeap</code> class we examined in class. There are two primary differences:</p>
+<ol style="list-style-type: decimal">
+<li><p>the class is not templated, but rather stores just integers, and</p></li>
+<li><p>instead of holding a pointer to a <code>Node</code>, with a value and a key, each slot of the vector holds just an integer. The value and the key are the same in this case.</p></li>
+</ol>
+<p><code>HeapSort.cpp</code> contains a main program to test the sort you are going to write. You should not modify this file.</p>
+<p>To make your HeapSort work, make two modifications to the <code>IntMinHeap</code> class:</p>
+<ol style="list-style-type: decimal">
+<li>Add another public constructor to <code>IntMinHeap</code>, that takes a pointer to an array of integers, and an unsigned value representing the size of the array. The constructor should copy the values from the array into the heap's vector, and then enforce the min-heap property. The signature for your new constructor should be:</li>
+</ol>
+<pre><code>IntMinHeap(int* pA, unsigned n)</code></pre>
+<p>Given a vector of <em>n</em> items that is not a min-heap, the min-heap property can be enforced via this algorithm:</p>
+<pre><code>for(i = n/2; i &gt;= 1; i--)
+  minHeapify(i)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Add a public function to <code>IntMinHeap</code> to fill an array of integers with the elements from the heap, via successive calls to <code>removeMin()</code>. The signature for the new function should be</li>
+</ol>
+<pre><code>void toSortedArray(int* pA, unsigned n)</code></pre>
+<p>The first parameter points to the array that will be filled, and <code>n</code> is the number of slots in that array.</p>
+<p>Once you have implemented these two changes, the <code>HeapSort.cpp</code> file can be compiled. When you execute the program, if your sort works, it will output &quot;The arrays are equal!&quot; If your sort fails to work as a sort, the program will output &quot;The arrays are not equal!&quot;</p>
+</body>
+</html>
